@@ -11,10 +11,10 @@ Kenzie List1 Assignment
 # http://code.google.com/edu/languages/google-python-class/
 
 # Instructions:
-# Complete each function below by writing the code for it. main() is already 
-# set up to test all the functions with a few different inputs, printing 'OK' when 
+# Complete each function below by writing the code for it. main() is already
+# set up to test all the functions with a few different inputs, printing 'OK' when
 # each function returns the correct result.
-# The starter code for each function includes a bare 'return' which is just a 
+# The starter code for each function includes a bare 'return' which is just a
 # placeholder for your code.
 
 
@@ -27,7 +27,11 @@ Kenzie List1 Assignment
 
 def match_ends(words):
     # your code here
-    return
+    count = 0
+    for w in words:
+        if len(w) >= 2 and w[0] == w[len(w) - 1]:
+            count += 1
+    return count
 
 
 # B. front_x
@@ -38,8 +42,13 @@ def match_ends(words):
 # Hint: this can be done by making 2 lists and sorting each of them
 # before combining them.
 def front_x(words):
-    # your code here
-    return
+    #
+    list_x = list(filter(lambda x: x[0] == "x", words))
+    words = list(filter(lambda x: x[0] != "x", words))
+
+    list_x = sorted(list_x)
+    words = sorted(words)
+    return list_x + words
 
 
 # C. sort_last
@@ -50,7 +59,8 @@ def front_x(words):
 # Hint: use a custom key= function to extract the last element form each tuple.
 def sort_last(tuples):
     # your code here
-    return
+    tuples.sort(key=lambda x: x[-1:])
+    return tuples
 
 
 # Simple provided test() function used in main() to print
@@ -60,7 +70,8 @@ def test(got, expected):
         prefix = ' OK '
     else:
         prefix = '  X '
-    print('{} got: {}     expected: {}'.format(prefix, repr(got), repr(expected)))
+    print('{} got: {}     expected: {}'.format(
+        prefix, repr(got), repr(expected)))
 
 
 # Calls the above functions with interesting inputs.
